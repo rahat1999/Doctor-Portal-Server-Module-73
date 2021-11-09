@@ -50,7 +50,7 @@ async function run() {
         //-- search appointment email and date---//
         app.get('/appointments', verifyToken, async (req, res) => {
             const email = req.query.email;
-            const date = new Date(req.query.date).toLocaleDateString()
+            const date = req.query.date;
             const query = { email: email, date: date }
             const appointment = appointmentsCollection.find(query)
             const coursor = await appointment.toArray();
